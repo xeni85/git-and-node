@@ -1,16 +1,9 @@
 import React from 'react';
 import { Component } from 'react';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
-
+import DishDetail from './DishDetailComponent'
 class Menu extends Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            selectedDish: null
-        }
-    }
 
     render() {
         const menu = this.props.dishes.map((dish) => {

@@ -8,19 +8,12 @@ import { DISHES } from '../shared/dishes';
 
 
 class DishDetail extends Component {
-    constructor(props) {
-        super(props);
-        console.log(props);
-          this.state = {
-            dishes: DISHES, 
-            selectedDish: null
-          };
-        };
+
     renderDish(dish) {
         if (dish != null) {
             return (
                 <div className="row p-0 ms-1 ms-md-0">
-                    <div className="col-12 col-md-5 m-md-1 pe-md-0">
+                    <div>
                         <Card>
                             <CardImg width="100%" object src={dish.image} alt={dish.name} />
                             <CardBody>
@@ -30,7 +23,7 @@ class DishDetail extends Component {
                         </Card>
 
                     </div>
-                    <div className="col-12 col-md-5 list-unstyled m-1 ps-md-4 pt-md-0" >
+                    {/* <div className="col-12 col-md-5 list-unstyled m-1 ps-md-4 pt-md-0" >
                         <div key={dish.id} className="col-12 mt-0">
                             <Media tag="li" width="100%">
                                 <Media body className="ml-5">
@@ -39,7 +32,7 @@ class DishDetail extends Component {
                                 </Media>
                             </Media>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             );
         }
@@ -52,26 +45,30 @@ class DishDetail extends Component {
 
     renderComment(dish) {
         const comment = [];
+        if (dish != null) {
+            dish.comment.forEach(function (item, i) {
+                comment.push(<p>{item} <br></br> -- {dish.commentator[i]} </p>, <br></br>);
 
-        dish.comment.forEach(function (item, i) {
-            comment.push(<p>{item} <br></br> -- {dish.commentator[i]} </p>, <br></br>);
-
-        });
-
-        return comment;
+            });
+            console.log('this is comment')
+            console.log(comment)
+            return comment;
+        } else { return <div></div> }
 
     }
 
     render() {
+        const renderDish = this.renderDish(this.props.dish);
+        const renderComment = this.renderComment(this.props.dish);
         return (
             <div className="container">
-<div className="row">
-                  <div  className="col-12 col-md-5 m-1">
-                    {this.renderDish(this.state.selectedDish)}
-                  </div>
-                  <div  className="col-12 col-md-5 m-1">
-                    {this.renderComment(this.state.selectedDish)}
-                  </div>
+                <div className="row">
+                    <div className="col-12 col-md-5 m-1">
+                        {renderDish}
+                    </div>
+                    <div className="col-12 col-md-5 m-1">
+                        {renderComment}
+                    </div>
                 </div>
             </div>
         );
