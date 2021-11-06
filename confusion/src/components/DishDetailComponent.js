@@ -1,8 +1,7 @@
 import React from 'react';
 import { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
-import { Media } from 'react';
-import { DISHES } from '../shared/dishes';
+
 
 
 
@@ -12,7 +11,6 @@ class DishDetail extends Component {
     renderDish(dish) {
         if (dish != null) {
             return (
-
                     <div>
                         <Card>
                             <CardImg width="100%" object src={dish.image} alt={dish.name} />
