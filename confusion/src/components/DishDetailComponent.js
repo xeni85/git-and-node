@@ -12,7 +12,7 @@ class DishDetail extends Component {
     renderDish(dish) {
         if (dish != null) {
             return (
-                <div className="row p-0 ms-1 ms-md-0">
+
                     <div>
                         <Card>
                             <CardImg width="100%" object src={dish.image} alt={dish.name} />
@@ -21,19 +21,8 @@ class DishDetail extends Component {
                                 <CardText>{dish.description}</CardText>
                             </CardBody>
                         </Card>
-
                     </div>
-                    {/* <div className="col-12 col-md-5 list-unstyled m-1 ps-md-4 pt-md-0" >
-                        <div key={dish.id} className="col-12 mt-0">
-                            <Media tag="li" width="100%">
-                                <Media body className="ml-5">
-                                    <Media heading><h4>Comments</h4><br></br></Media>
-                                    {this.renderComment(dish)}
-                                </Media>
-                            </Media>
-                        </div>
-                    </div> */}
-                </div>
+
             );
         }
         else {
