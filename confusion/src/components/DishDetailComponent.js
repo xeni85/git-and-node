@@ -12,6 +12,7 @@ class CommentForm extends Component {
     constructor(props) {
         super(props);
 
+        this.handleSubmit=this.handleSubmit.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         this.state = {isModalOpen: false};
     }
@@ -21,13 +22,9 @@ class CommentForm extends Component {
     }
 
     handleSubmit(values) {
-        this.toggleModal();
-        this.props.postComment(
-            this.props.dishId,
-            values.rating,
-            values.author,
-            values.comment
-            );
+            
+        console.log("Current State is: " + JSON.stringify(values));
+        alert("Current State is: " + JSON.stringify(values));
     }
 
     render() {
@@ -141,7 +138,7 @@ const DishDetail = (props) => {
                         <RenderDish dish={props.dish} />
                     </div>
                     <div className="col-12 col-md-5 m-1">
-                        <RenderComments comments={props.comments} />
+                        <RenderComments comments={props.comments} postComment={props.postComment} />
                     </div>
                 </div>
             </div>
